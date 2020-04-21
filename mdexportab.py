@@ -51,13 +51,16 @@ def parse_mrk_file(userab, ab):
     """Parse the ab file, ignoring already parsed entries"""
 
     for c in ab.iter('contact'):
-        name = c.find('fullName').text
-        email = c.find('email').text
+        try:
+            name = c.find('fullName').text
+            email = c.find('email').text
 
-        # final string
-        entry = name + ";" + email + ";"
-        if not entry in userab:
-            userab.append(entry)
+            # final string
+            entry = name + ";" + email + ";"
+            if not entry in userab:
+                userab.append(entry)
+        except:
+            pass
 
     return userab
 
@@ -92,8 +95,12 @@ if __name__ == "__main__":
         files = get_mrk_files(upath)
         for f in files:
             # load the file
-            xf = ET.parse(f)
-            ab = xf.getroot()
+            try:
+                xf = ET.parse(f)
+                ab = xf.getroot()
+            except:
+                pass
+                continue
 
             # detect if the file has valid entries
             if len(ab) != 0: 
