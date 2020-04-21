@@ -104,13 +104,13 @@ if __name__ == "__main__":
 
             # detect if the file has valid entries
             if len(ab) != 0: 
-                print("file {} has {} valid entries, loadings it".format(f, len(ab)))
+                userab = parse_mrk_file(userab, ab)
 
-            # parse file
-            userab = parse_mrk_file(userab, ab)
-
-        # write the file for that user
-        uf = os.path.join(opath, u + ".csv")
-        print(uf)
-        with open(uf, mode='wt', encoding='utf-8') as myfile:
-            myfile.write('\n'.join(userab))
+        if len(userab) > 0:
+            # notice
+            print("User: {}, rescued {} contacts".format(u, len(userab)))
+            # write the file for that user
+            uf = os.path.join(opath, u + ".csv")
+            print(uf)
+            with open(uf, mode='wt', encoding='utf-8') as myfile:
+                myfile.write('\n'.join(userab))
