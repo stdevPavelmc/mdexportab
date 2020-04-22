@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 
-########################################################
-# Script to export the MDaemon Addresbook for all users
-# in a domain folder
+#########################################################################################
+# Script to export the MDaemon Addresbook for all users in one or various domain folders
 #
 # Author: pavelm@gmail.com @stdevPavelmc in github
 # 
-# Python 3 for windows or copy the domain folder to linux
-########################################################
+# Instructions:
+#   - Install Python 3.5 or later for windows
+#   - Copy this script to the "Users" folder where MDaemon put it's domain folders 
+#   - Run the script from inside that folder 
+#########################################################################################
 
 import os
 import xml.etree.ElementTree as ET
