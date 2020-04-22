@@ -79,50 +79,52 @@ if __name__ == "__main__":
     # work on local path
     path = './'
 
-    # domain, first folder on actual path
-    domain = detect_folders_inside(path)[0]
-    print(">> Local domain folder is:\n{}".format(domain))
-    dpath = os.path.join(path, domain)
-
-    # users
-    users = detect_folders_inside(os.path.join(path, domain + os.sep))
-    print(">> User's folders detected on that domain:")
-    for uf in users:
-        print(uf)
-
     # create the output directory
     opath = os.path.join(path, "output")
-    print(opath)
     os.makedirs(opath, exist_ok=True)
 
-    # parsing users
-    for u in users:
-        print("Parsing user: {}".format(u))
-        upath = os.path.join(dpath, u)
+    # domains, detecting all the domain folders
+    domains = detect_folders_inside(path)
+    for d in domains:
+        # ignode the output directory
+        if d == "output":
+            continue
 
-        # users address book
-        userab = []
+        # Advice
+        print("> Working on domain folder: {}".format(d))
 
-        files = get_mrk_files(upath)
-        for f in files:
-            # load the file
-            try:
-                xf = ET.parse(f)
-                ab = xf.getroot()
-            except:
-                pass
-                continue
+        # domain path and detect users
+        dpath = os.path.join(path, d)
+        users = detect_folders_inside(os.path.join(dpath))
 
-            # detect if the file has valid entries
-            if len(ab) != 0: 
-                userab = parse_mrk_file(userab, ab)
+        # parsing users
+        for u in users:
+            upath = os.path.join(dpath, u)
 
-        if len(userab) > 0:
-            # notice
-            print("User: {}, rescued {} contacts".format(u, len(userab)))
-            # write the file for that user
-            uf = os.path.join(opath, u + ".vcf")
-            print(uf)
-            with open(uf, mode='wt', encoding='utf-8') as myfile:
-                for c in userab:
-                    myfile.write(vcfWriter(c))
+            # users address book
+            userab = []
+
+            files = get_mrk_files(upath)
+            for f in files:
+                # load the file
+                try:
+                    xf = ET.parse(f)
+                    ab = xf.getroot()
+                except:
+                    pass
+                    continue
+
+                # detect if the file has valid entries
+                if len(ab) != 0:
+                    userab = parse_mrk_file(userab, ab)
+
+            if len(userab) > 0:
+                # notice
+                print(">> User: {}, rescued {} contacts".format(u, len(userab)))
+                # write the file for that user
+                ud = os.path.join(opath, d)
+                os.makedirs(ud, exist_ok=True)
+                uf = os.path.join(ud, u + ".vcf")
+                with open(uf, mode='wt', encoding='utf-8') as myfile:
+                    for c in userab:
+                        myfile.write(vcfWriter(c))
