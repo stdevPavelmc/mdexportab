@@ -26,7 +26,7 @@ The script is GPLv3 aka free/libre software, contributions, bug reports & commen
 
 **It's possible to export the data in another format?**
 
-Yes, drop me a tweet (@co7wt) or an issue on this repository and I will think about it.
+Yes, drop me a tweet (@co7wt) or an issue on this repository and I will think about it
 
 **It only works with that precise version of Python?**
 
@@ -38,9 +38,13 @@ Simply, some users don't have any address in their addressbook files, that users
 
 **I ran the script and it's taking ages to finish, is that normal?**
 
-It depends on the user count, the contacts per users, and even on the hardware & PC load at the time of run.
+It depends on the user count, the contacts per users, and even on the hardware & PC load at the time of run
 
 For example: in a Production PC that is a Corei3 (4th gen) PC with 8 GB of RAM and Windows Server 2008 r2 with other services in the bacground (MSSQL, Domain Controller & MDaemon server) it took about 8 minutes for ~50 users and about 1200 contacts globally
+
+**I wonder if your script can do A, B or even C new feature... can you implement that?**
+
+Yes, but remember It's a hobby for me and I work on it holliday/weekend style; it can take a while to be implemented, use the issues feature ot github to report your request
 
 **Hey! this is a great tool and I want to donate some of the saved ~$50 bucks to you**
 
