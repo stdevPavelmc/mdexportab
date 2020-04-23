@@ -30,7 +30,7 @@ Yes, drop me a tweet (@co7wt) or an issue on this repository and I will think ab
 
 **It only works with that precise version of Python?**
 
-No, it _must_ work with any python in the 3.x branch; for example in a recent migration job I found that a Windows 2008 server can't install the latest python 3.8.x and ask me for a service pack and a .NET version... using an old python version (3.5) I managed to wun it and avoid the nasty & time-consumming upgrade and .NET install
+No, it _must_ work with any python in the 3.x branch; for example in a recent migration job I found that a Windows 2008 server can't install the latest python 3.8.x and ask me for a service pack and a .NET version... using an old python version (3.5) I managed to run it and avoid the nasty & time-consumming upgrade and .NET install as that server will be reinstalled with a FLOSS solution
 
 **Why it's not exporting data for some users? or I have 200 users and only exported data for 123 of them?**
 
@@ -38,13 +38,13 @@ Simply, some users don't have any address in their addressbook files, that users
 
 **I ran the script and it's taking ages to finish, is that normal?**
 
-It depends on the user count, the contacts per users, and even on the hardware & PC load at the time of run
+It depends on the user count, the mails count on every user's folder, and even on the hardware & PC load at the time of run
 
-For example: in a Production PC that is a Corei3 (4th gen) PC with 8 GB of RAM and Windows Server 2008 r2 with other services in the bacground (MSSQL, Domain Controller & MDaemon server) it took about 8 minutes for ~50 users and about 1200 contacts globally
+For example: in a Corei3 (4th gen) PC with 8 GB of RAM with Windows Server 2008 r2 as a Production PC, even with other services in the bacground (MSSQL, Domain Controller & MDaemon server) it took about 8 minutes for ~80 users, +50GB of emails and about 1200 contacts globally
 
 **I wonder if your script can do A, B or even C new feature... can you implement that?**
 
-Yes, but remember It's a hobby for me and I work on it holliday/weekend style; it can take a while to be implemented, use the issues feature ot github to report your request
+Yes, but remember It's a hobby for me and I work on it holliday/weekend style; it can take a while to be implemented, use the issues feature ot github to report your request; if you are on a rush I will accept a small donation to give you priority.
 
 **Hey! this is a great tool and I want to donate some of the saved ~$50 bucks to you**
 
